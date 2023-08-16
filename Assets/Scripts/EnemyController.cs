@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody enemyRb;
     private GameObject player;
+    public EnemyType enemyType;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +20,29 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var vectorToMove = (player.transform.position - transform.position).normalized; 
-        enemyRb.AddForce(vectorToMove * speed);
+        DestroyEnemy();
+        ChasePlayer();
+    }
 
+    public void DestroyEnemy()
+    {
         if (transform.position.y < -10)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void ChasePlayer()
+    {
+        var vectorToMove = (player.transform.position - transform.position).normalized;
+        enemyRb.AddForce(vectorToMove * speed);
+    }
+
+    public enum EnemyType
+    {
+        Normal,
+        Attacker,
+        Speeder,
+        Defender
     }
 }

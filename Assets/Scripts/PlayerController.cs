@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private GameObject focalPoint;
     private bool hasPowerup = false;
-    private int powerUpTime = 7;
-    private float powerUpForce = 15f;
+    private readonly int powerUpTime = 7;
+    private readonly float powerUpForce = 15f;
     private Vector3 powerUpIndicatorOffset;
 
     // Start is called before the first frame update
@@ -61,11 +61,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag(AppConstants.Tag.Enemy.ToString()) && hasPowerup)
+        if(collision.gameObject.CompareTag(AppConstants.Tag.Enemy.ToString()))
         {
-            var vectorToMoveAway = collision.gameObject.transform.position - transform.position;
-            var enemyRb = collision.gameObject.GetComponent<Rigidbody>();
-            enemyRb.AddForce(vectorToMoveAway * powerUpForce, ForceMode.Impulse);
-        } 
+            if (hasPowerup)
+            {
+                PushEnemy(collision);
+            }
+
+        }
+    }
+
+    private void PushEnemy(Collision collision)
+    {
+        var vectorToMoveAway = collision.gameObject.transform.position - transform.position;
+        var enemyRb = collision.gameObject.GetComponent<Rigidbody>();
+        enemyRb.AddForce(vectorToMoveAway * powerUpForce, ForceMode.Impulse);
     }
 }

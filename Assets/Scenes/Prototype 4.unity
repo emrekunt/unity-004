@@ -568,7 +568,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef2a697ddf6ef4009bab64c122515df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 205976176710026143, guid: 64fa0280b378f4e3da2be1438aa42e7e, type: 3}
+  enemyPrefabs:
+  - {fileID: 2521545558962803310, guid: c8e252e3c05614b6baf73d61e0c5df68, type: 3}
+  - {fileID: 3530913345077656622, guid: bd2b04215fa9048a3b42feabf25e4903, type: 3}
+  - {fileID: 3159412760477035041, guid: f9f9e4fe366dd4bed97cec887f2cc82b, type: 3}
+  - {fileID: 205976176710026143, guid: 64fa0280b378f4e3da2be1438aa42e7e, type: 3}
   powerupPrefab: {fileID: 5580349801658153003, guid: 0ef5b2b9282bc413b8e92b6b620486f7, type: 3}
   hasWaveFinished: 0
   enemyCount: 0
