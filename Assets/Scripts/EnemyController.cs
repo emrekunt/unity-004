@@ -21,5 +21,10 @@ public class EnemyController : MonoBehaviour
     {
         var vectorToMove = (player.transform.position - transform.position).normalized; 
         enemyRb.AddForce(vectorToMove * speed);
+
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }
